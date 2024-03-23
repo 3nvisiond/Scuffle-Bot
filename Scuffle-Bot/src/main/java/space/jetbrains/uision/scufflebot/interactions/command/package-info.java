@@ -1,0 +1,1 @@
+package space.jetbrains.uision.scufflebot.interactions.command;
