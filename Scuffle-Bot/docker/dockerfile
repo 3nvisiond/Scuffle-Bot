@@ -1,7 +1,0 @@
-FROM openjdk:17
-
-COPY ./ /tmp
-
-WORKDIR /tmp
-
-ENTRYPOINT ["java", "/build/classes/java/main/space/jetbrains/uision/scufflebot/Scuffle"]
