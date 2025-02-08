@@ -1,7 +1,7 @@
-FROM openjdk:17
+FROM eclipse-temurin:21
 
-COPY ./ /tmp
+RUN mkdir /bin/app
 
-WORKDIR /tmp
+COPY /build/libs/Scuffle-Bot-1.0-SNAPSHOT.jar /bin/app
 
-ENTRYPOINT ["java", "/build/classes/java/main/space/jetbrains/uision/scufflebot/Scuffle"]
+CMD ["java", "-jar", "/bin/app/Scuffle-Bot-1.0-SNAPSHOT.jar"]
