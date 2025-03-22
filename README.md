@@ -1,4 +1,6 @@
-## Scuffle Bot
+## Scuffle: The Multipurpose Moderation Bot
+
+[![GitHub Release](https://img.shields.io/github/v/release/FollyBlossom/Scuffle-Bot)](https://github.com/FollyBlossom/Scuffle-Bot/releases/latest)
 
 ## A Discord bot focused on ease of use moderation, and utility.
 
@@ -26,7 +28,7 @@ For anyone wishing to contribute to the project you need only a few things:
 * JDK 21.
 * The latest version of Gradle.
 
-In other words there are no steps required to contribute to this project.
+**In other words** *there are no steps required to contribute to this project.*
 
 ## Expectations
 
@@ -35,7 +37,7 @@ We'd hope that you are co-operative enough to work with us, on issues, outages, 
 
 ## Find A Bug?
 
-Create an issue for it with the "bug" label!
+[Create an issue](https://github.com/FollyBlossom/Scuffle-Bot/issues/new) for it with the "bug" label!
 
 When submitting a pull request make sure to squash all merges.
 
@@ -43,7 +45,7 @@ Do note that an issue related to the pull request is required in order to be app
 
 ## Known Issues
 
-A list of issues or core bugs that have already been brought up:
+[A list of issues](https://github.com/FollyBlossom/Scuffle-Bot/issues/) or core bugs that have already been brought up:
 
 * Logs not working
 * Ping command not working
