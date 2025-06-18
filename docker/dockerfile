@@ -1,7 +1,0 @@
-FROM eclipse-temurin:21
-
-RUN mkdir /bin/app
-
-COPY /build/libs/Scuffle-Bot-1.0-SNAPSHOT.jar /bin/app
-
-CMD ["java", "-jar", "/bin/app/Scuffle-Bot-1.0-SNAPSHOT.jar"]
