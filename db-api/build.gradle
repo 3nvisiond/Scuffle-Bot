@@ -1,0 +1,50 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+version = "1.0.0"
+
+dependencies {
+    implementation 'com.zaxxer:HikariCP:5.1.0'
+    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'org.json:json:20231013'
+}
+
+jar {
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}"
+        )
+    }
+}
+
+shadowJar {
+    archiveBaseName.set(project.name)
+    archiveClassifier.set('')
+    archiveVersion.set(project.version.toString())
+
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}"
+        )
+    }
+
+    mergeServiceFiles()
+}
+
+build {
+    dependsOn shadowJar
+}

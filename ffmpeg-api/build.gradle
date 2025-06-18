@@ -1,0 +1,59 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'net.scuffle'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.bytedeco:javacv-platform:1.5.11")
+}
+
+jar {
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}"
+        )
+    }
+}
+
+shadowJar {
+    archiveBaseName.set(project.name)
+    archiveClassifier.set('')
+    archiveVersion.set(project.version.toString())
+
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}"
+        )
+    }
+
+    from('src/main/resources') {
+        into 'src/main/resources'
+    }
+
+    mergeServiceFiles()
+}
+
+build {
+    dependsOn shadowJar
+}
+
+test {
+    useJUnitPlatform()
+}

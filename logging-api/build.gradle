@@ -1,0 +1,56 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+version = '1.0.1'
+
+dependencies {
+    implementation 'net.dv8tion:JDA:5.0.0-beta.19'
+    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+    implementation 'org.jetbrains:annotations:15.0'
+
+    implementation project(":db-api")
+}
+
+jar {
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}",
+                "Main-Class": "net.scuffle.scufflebot.logging.LoggingService"
+        )
+    }
+}
+
+shadowJar {
+    archiveBaseName.set(project.name)
+    archiveClassifier.set('')
+    archiveVersion.set(project.version.toString())
+
+    manifest {
+        attributes(
+                "Built-By": "Folly Blossom",
+                "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss.SSSZ").format(new Date()),
+                "Build-JDK": "${System.properties['java-version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS": "${System.properties['os.name']}",
+                "Created-By": "Gradle ${gradle.gradleVersion}",
+                "Main-Class": "net.scuffle.scufflebot.logging.LoggingService"
+        )
+    }
+
+    from('src/main/resources') {
+        into 'src/main/resources'
+    }
+
+    mergeServiceFiles()
+}
+
+build {
+    dependsOn shadowJar
+}

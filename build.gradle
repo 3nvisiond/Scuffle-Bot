@@ -1,21 +1,36 @@
-
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
 }
 
-group = 'space.jetbrains.uision'
-version = '1.0-SNAPSHOT'
+allprojects {
+    group = 'net.scuffle'
+    version = '1.0.0'
 
-repositories {
-    mavenCentral()
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    implementation 'net.dv8tion:JDA:5.0.0-beta.19'
-    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
-    implementation 'org.jetbrains:annotations:15.0'
-}
+subprojects {
+    apply plugin: 'java'
 
-test {
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
 
+    dependencies {
+        implementation('org.slf4j:slf4j-api:2.0.12')
+        runtimeOnly('ch.qos.logback:logback-classic:1.5.13')
+
+        testImplementation('org.junit:junit-bom:5.10.0')
+        testImplementation('org.junit.jupiter:junit-jupiter')
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }

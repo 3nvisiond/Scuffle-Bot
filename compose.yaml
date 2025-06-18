@@ -1,0 +1,55 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: app
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./app
+          target: app
+  command:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: command
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./app/command
+          target: command
+  logging-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: logging-api
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./logging-api
+          target: logging-api
+  db-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: db-api
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./db-api
+          target: db-api
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: scuffle
+      POSTGRES_PASSWORD: account5-promotion0-cried5-sketch1
+      POSTGRES_DB: audit_db
+    volumes:
+      - db1_audit_data:/var/lib/postgresql/data
+
+volumes:
+  db1_audit_data:
