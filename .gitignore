@@ -1,5 +1,13 @@
+/.settings
+
 /.gradle
-/.idea
-/.vscode
-/build
+
 /bin
+
+/lazygit
+
+/.idea
+
+/.vscode
+
+/build

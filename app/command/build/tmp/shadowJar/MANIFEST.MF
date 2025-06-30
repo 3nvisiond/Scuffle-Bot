@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: Folly Blossom
+Build-Timestamp: 2025-05-30_04:26:09.361-0400
+Build-JDK: null (Oracle Corporation 21.0.5+9-LTS-239)
+Build-OS: Windows 11
+Created-By: Gradle 8.14.1
+Main-Class: net.scuffle.scufflebot.command.CommandService
+

@@ -1,0 +1,1 @@
+package net.scuffle.scufflebot.interactions.command;
